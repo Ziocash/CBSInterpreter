@@ -1,0 +1,50 @@
+﻿<Window x:Class="CBSInterpreter.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CBSInterpreter.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="MainDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto" Binding="{Binding DateTime}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Date and time"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="Auto" Binding="{Binding Type}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Type"/>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Type}" Value="Info">
+                                    <Setter Property="Background" Value="LightGreen" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Type}" Value="Error">
+                                    <Setter Property="Background" Value="IndianRed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Type}" Value="Unknown">
+                                    <Setter Property="Background" Value="White" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="Auto" Binding="{Binding Context}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Context"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding Value}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Value"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
