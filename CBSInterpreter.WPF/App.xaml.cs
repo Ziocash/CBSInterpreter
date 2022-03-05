@@ -22,7 +22,7 @@ namespace CBSInterpreter.WPF
         {
             services.AddSingleton<MainWindow>();
             services.AddLogging(opt =>
-            opt.AddSerilog(new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File(@$"./log{DateTime.Now:yyyymmdd}.log").CreateLogger()));
+            opt.AddSerilog(new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File(@$"./log{DateTime.Now:yyyyMMdd}.log").CreateLogger()));
         }
 
         protected override void OnStartup(StartupEventArgs e)
