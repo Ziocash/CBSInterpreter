@@ -1,5 +1,6 @@
 ﻿using CBSInterpreter.Models;
 using CBSInterpreter.Models.Enums;
+using CBSInterpreter.Models.Exceptions;
 using System.Text;
 
 namespace CBSInterpreter.Core
@@ -17,9 +18,20 @@ namespace CBSInterpreter.Core
 
         public string FileName { get; internal set; } = @"C:\Windows\Logs\CBS\CBS.log";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="CBSReaderException"></exception>
         public CBSReader()
         {
-            _reader = new(FileName);
+            try
+            {
+                _reader = new(FileName);
+            }
+            catch(Exception ex)
+            {
+                throw new CBSReaderException("Reader exception.", ex);
+            }
             _entries = new();
             _stringBuilder = new();
         }
