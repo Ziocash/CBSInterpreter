@@ -13,9 +13,9 @@ namespace CBSInterpreter.Tests
             CBSReader reader = new();
             List<CBSEntry> entries = new();
             Assert.DoesNotThrow(() => { entries = reader.GetEntries(); });
-            Assert.NotNull(entries);
-            Assert.NotZero(entries.Count);
-            Assert.IsFalse(entries[1] == entries[0]);
+            Assert.That(entries, Is.Not.Null);
+            Assert.That(entries, Has.Count.Not.EqualTo(0));
+            Assert.That(entries[1] == entries[0], Is.False);
         }
     }
 }
